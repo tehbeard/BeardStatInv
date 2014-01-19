@@ -6,6 +6,7 @@ import net.dragonzone.promise.Promise;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.tehbeard.beardstat.BeardStat;
@@ -38,6 +39,12 @@ public class BeardStatInv extends JavaPlugin implements Listener {
                 return null;
             }
         });
+    }
+    
+    @EventHandler
+    public void onLeave(PlayerQuitEvent event){
+        //Fire an update as they leave.
+        manager.getBlobForPlayer(event.getPlayer()).getDocument("bsinv", "inventory", InventoryDocument.class).getDocument();
     }
   
 }
