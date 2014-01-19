@@ -1,0 +1,5 @@
+name: BeardStatInv
+main: com.tehbeard.beardstatinv.BeardStatInv
+version: 1.0
+authors: [Tehbeard]
+depend: ["BeardStat"]

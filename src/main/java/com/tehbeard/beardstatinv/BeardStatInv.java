@@ -29,7 +29,7 @@ public class BeardStatInv extends JavaPlugin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
         /**
-         * Create and/or load the inventory document.
+         * Create and/or load the inventory document for each player who joins.
          */
         manager.getBlobForPlayerAsync(event.getPlayer()).onResolve(new Delegate<Void, Promise<EntityStatBlob>>() {
             

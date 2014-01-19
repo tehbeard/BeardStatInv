@@ -8,6 +8,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.Repairable;
 import org.bukkit.inventory.meta.SkullMeta;
 
@@ -86,6 +87,10 @@ public class JsonNbtTag {
             for( Entry<Enchantment, Integer> e : itemMeta.getEnchants().entrySet()){
                 ench.add(new Ench(e.getKey().getId(),e.getValue()));
             }
+        }
+        if(itemMeta instanceof LeatherArmorMeta){
+            initDisplay();
+            display.color = ((LeatherArmorMeta) itemMeta).getColor().asRGB();
         }
 
         if(itemMeta instanceof Repairable){

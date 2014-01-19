@@ -40,11 +40,11 @@ public class InventoryDocument implements IStatDynamicDocument{
 
     public void updateDocument(EntityStatBlob blob) {
         if(!Bukkit.isPrimaryThread()){
-            if(!blob.getType().equals(IStatDataProvider.PLAYER_TYPE)){
-                throw new IllegalStateException("Inventory document attached to a non player object [" + blob.getName() + " : " + blob.getType());
-            }
+            if(blob == null){throw new IllegalStateException("No blob provided.");}
             Player p = Bukkit.getPlayerExact(blob.getName());
+            
             if(p != null){
+                inventory.clear();
                 //Update player inventory
                 ItemStack[] inv = p.getInventory().getContents();
                 for(int i = 0;i<inv.length;i++){
