@@ -40,7 +40,7 @@ public class InventoryDocument implements IStatDynamicDocument{
 
     public void updateDocument(EntityStatBlob blob) {
         if(!Bukkit.isPrimaryThread()){
-            if(blob == null){throw new IllegalStateException("No blob provided.");}
+            if(blob == null){return;}
             Player p = Bukkit.getPlayerExact(blob.getName());
             
             if(p != null){
